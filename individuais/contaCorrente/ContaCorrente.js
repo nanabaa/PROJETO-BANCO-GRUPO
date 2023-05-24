@@ -1,4 +1,3 @@
-//Classes
 class contaCorrente{
     constructor(numero,cpf,saldo,ativa){
     this.numero = numero;
@@ -7,13 +6,11 @@ class contaCorrente{
     this.ativa = ativa
 }
 
-//Ativar a conta
 ativar(){
     this.ativa = true;
 }
 
 
-//Adicionar Credito
 Credito(valor){
     if(this.ativa){
        if(valor<0){
@@ -32,7 +29,6 @@ Credito(valor){
 }
 
 
-//Debitar da Conta
 Debito(valor){
     if(this.ativa){
     if(valor<0){

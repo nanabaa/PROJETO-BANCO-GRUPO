@@ -1,3 +1,185 @@
+class contaPoupanca{
+    constructor(numero,cpf,aniversario,diaAtual,saldo,ativo){
+        this.numero = numero;
+        this.cpf = cpf;
+        this.aniversario = aniversario;
+        this.diaAtual = diaAtual;
+        this.saldo = saldo;
+        this.ativo = ativo
+    }
+    ativar(){
+        this.ativo = true;
+    }
+    credito(valor){
+        if(this.ativo){
+            if(valor<0){
+                console.log("impossivel realizar. valor negativo.")
+            }
+            else if(valor==0){				
+                console.log("Impossivel realizar, valor zerado...")				
+                }				
+            else {				
+            this.saldo += valor				
+            }				
+        }				
+            else {				
+            console.log("Conta inativa....")				
+            }			
+    }				
+
+
+    debito(){
+        if(this.ativo){
+            if(valor<0){
+                console.log("Impossivel realizar. Valor negativo.")
+            }
+            else if(valor==0){
+                console.log("Impossivel realizar. Valor zerado.")
+            }
+            else if(valor>this.saldo){
+                console.log("Impossivel realizar. Valor indisponível.")
+            }
+            else{
+                this.saldo -= valor
+            }
+        }
+        else{
+           console.log("conta inativa.") 
+        }
+    }
+
+    diaAniversarioPoupanca(nBonus){
+        if(this.ativo){
+            if(this.aniversario===this.diaAtual && nBonus===0){
+                this.saldo =  this.saldo+(0.05*this.saldo)
+                nBonus+=1
+            }
+            else{
+                console.log("Nenhum bonus disponível.")
+            }
+        }
+        else{
+            console.log("conta inativa.") 
+         }
+    }	
+}
+class contaCorrente{
+    constructor(numero,cpf,saldo,ativa){
+    this.numero = numero;
+    this.cpf = cpf;
+    this.saldo = saldo;
+    this.ativa = ativa
+}
+
+ativar(){
+    this.ativa = true;
+}
+
+
+Credito(valor){
+    if(this.ativa){
+       if(valor<0){
+        console.log("Impossivel Realizar, valor negativo...")
+       }
+       else if(valor == 0){
+        console.log("Saldo zerado...")
+    }
+    else {
+        this.saldo += valor
+    }
+    }
+    else{
+        console.log("Conta Inativa...")
+    }
+}
+
+
+Debito(valor){
+    if(this.ativa){
+    if(valor<0){
+        console.log("Impossivel Realizar, valor negativo...")
+    }
+    else if(valor == 0){
+        console.log("Saldo zerado...")
+    }
+    else if(valor > this.saldo){
+        console.log("Impossivel realizar, Saldo Indisponivel...")
+    }
+    else {
+        this.saldo -= valor
+    }
+}
+else{
+    console.log("Conta Inativa...")
+}
+}
+pedirTalao(NCH){
+    if(this.ativa){
+        this.saldo+=(30*NCH)
+
+}
+else{
+    console.log("Conta Inativa...")
+}
+}
+}
+class contaEspecial{
+    constructor(numero,cpf,saldo,ativo,limite,nome){
+        this.numero = numero;
+        this.cpf = cpf;
+        this.saldo = saldo;
+        this.ativo = ativo;
+        this.limite = limite;
+        this.nome = nome
+    }
+
+    ativar(){
+        this.ativo = true;
+    }
+
+    credito(valor){
+        if(this.ativo){
+            if(valor<0){
+                console.log("impossivel realizar. valor negativo.")
+            }
+            else if(valor==0){				
+                console.log("Impossivel realizar, valor zerado...")				
+                }				
+            else {				
+            this.saldo += valor				
+            }				
+        }				
+            else {				
+            console.log("Conta inativa....")				
+            }				
+    }				
+
+
+    debito(valor){
+        if(this.ativo){
+            if(valor>0 && valor<this.saldo){
+                this.saldo -= valor
+            }
+            else if(valor>this.saldo){
+                if(valor-this.saldo<this.limite){
+                    this.limite = this.limite - valor;
+                    this.limite = this.limite + this.saldo;
+                    this.saldo= this.saldo - this.saldo;
+                }
+                else{
+                    console.log("Impossivel realizar. Valor supera o valor do saldo e o limite.")
+                }
+
+            }
+            else{
+                console.log("impossivel realizar, valor invalido")
+            }
+        }
+        else{
+           console.log("conta inativa.") 
+        }
+    }
+}
 class contaEmpresa{
     constructor(numero,cpf,saldo,ativo,emprestimo,nome){
         this.numero = numero;
@@ -59,63 +241,6 @@ class contaEmpresa{
             else{
                 this.emprestimo-=valor
                 this.saldo += valor
-            }
-        }
-        else{
-           console.log("conta inativa.") 
-        }
-    }
-}
-class contaEspecial{
-    constructor(numero,cpf,saldo,ativo,limite,nome){
-        this.numero = numero;
-        this.cpf = cpf;
-        this.saldo = saldo;
-        this.ativo = ativo;
-        this.limite = limite;
-        this.nome = nome
-    }
-
-    ativar(){
-        this.ativo = true;
-    }
-
-    credito(valor){
-        if(this.ativo){
-            if(valor<0){
-                console.log("impossivel realizar. valor negativo.")
-            }
-            else if(valor==0){				
-                console.log("Impossivel realizar, valor zerado...")				
-                }				
-            else {				
-            this.saldo += valor				
-            }				
-        }				
-            else {				
-            console.log("Conta inativa....")				
-            }				
-    }				
-
-
-    debito(valor){
-        if(this.ativo){
-            if(valor>0 && valor<this.saldo){
-                this.saldo -= valor
-            }
-            else if(valor>this.saldo){
-                if(valor-this.saldo<this.limite){
-                    this.limite = this.limite - valor;
-                    this.limite = this.limite + this.saldo;
-                    this.saldo= this.saldo - this.saldo;
-                }
-                else{
-                    console.log("Impossivel realizar. Valor supera o valor do saldo e o limite.")
-                }
-
-            }
-            else{
-                console.log("impossivel realizar, valor invalido")
             }
         }
         else{
@@ -214,10 +339,85 @@ tc = leia("qual o seu tipo de conta :")
 }
 
 if (tc==1){
-
+    let numero = parseInt(leia("digite o numero da conta: "))
+    let cpf = parseInt (leia("digite o cpf da conta: "))
+    let aniversario = ""
+    aniversario = (leia("insira sua data de aniversario: "))
+    let diaAtual = ""
+    let nBonus = 0
+    let c1 = new contaPoupanca(numero,cpf,aniversario,diaAtual,0,false)
+    let op=""
+    let valor = 0
+    let continuar = ""
+    c1.ativar()
+    for(let x=1; x<=10; x++){
+        console.log("movimento: "+x)
+        console.log("saldo atual conta: "+c1.saldo)
+        diaAtual = (leia("insira a data atual: "))
+        op=leia("digite D para debito, C para credito: ")
+        if(op=="D"){
+            valor=parseInt (leia("digite o valor para debito: "))
+            c1.debito(valor)
+        }
+        else if(op=="C"){
+            valor=parseInt (leia("digite o valor para credito: "))
+            c1.credito(valor)
+        }
+    
+        if(c1.saldo>0){
+        c1.diaAniversarioPoupanca(nBonus)
+        }
+        continuar=leia("continuar S/N ")
+    if(continuar=="N" || continuar=="n"){
+        console.log("obrigado por fazer operações conosco")
+        x+= 10
+    }
+    }
 }
 else if(tc==2){
-
+    const leia = require("prompt-sync")()
+    let numero = parseInt(leia ("Digite o numero da Conta : "))
+    let cpf = leia("Digite o cpf da conta : ")
+    let c1 = new contaCorrente(numero,cpf,0,false)
+    let op=""
+    let NCH = ""
+    let nCheque = 0
+    let valor = 0
+    let continuar = ""
+    c1.ativar()
+    for(let x=1; x<=10; x++){
+        op = leia("Digite D - debito, C para Credito: ")
+        if(op=="D"){
+            valor = parseInt(leia ("Digite o valor para debito : "))
+            c1.Debito(valor)
+            continuar=leia("continuar S/N : ")
+            if(continuar=="N" || continuar=="n"){
+                console.log("obrigado por fazer operações conosco")
+                x+= 10
+            }
+        }
+        else if(op=="C") {
+            valor = parseInt(leia ("Digite o valor para Credito : "))
+            c1.Credito(valor)
+            continuar=leia("continuar S/N : ")
+        if(continuar=="N" || continuar=="n"){
+            console.log("obrigado por fazer operações conosco")
+            x+= 10
+        }
+        }
+        }
+    
+    console.log("Saldo atual conta : " + c1.saldo)
+    continuar=leia("gostaria de sacar um cheque? S/N : ")
+    if (continuar=="S" || continuar =="s"){
+        NCH=leia("quantos cheques voce vai querer? : ")
+        if(NCH<=3){
+            c1.pedirTalao(NCH)
+        }
+        else{
+            console.log("numero invalido")
+        }
+    }
 }
 else if(tc==3){
     let numero = parseInt(leia("digite o numero da conta:"))
@@ -333,4 +533,18 @@ else if(tc==6){
 }
 else{
     console.log("o numero que digitou é invalido por favor tente novamente: ")
+    x=1
+    for (let x=1; x<2; x++){
+        console.log("Bem Vindo ao banco GLS " + "O banco que te ajuda ") 
+        console.log("")
+        console.log("informe o seu tipo de conta para que possamos te ajudar") 
+        console.log("1-conta Poupança")
+        console.log("2-conta Corrente")
+        console.log("3-conta Especial")
+        console.log("4-conta Empresa")
+        console.log("5-conta estudantil")
+        console.log("6-sair")
+        tc = leia("qual o seu tipo de conta :")
+        }
+
 }
